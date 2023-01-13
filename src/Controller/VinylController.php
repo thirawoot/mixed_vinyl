@@ -11,7 +11,7 @@ class VinylController extends AbstractController
     #[Route('/')]
     public function index(): Response
     {
-       return new Response('ok');
+       return $this->render('index.html.twig');
     }
 
     // #[Route('/browse')]
