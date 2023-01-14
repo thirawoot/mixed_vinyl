@@ -11,6 +11,7 @@
 
 php_errors.log
 */php_errors.log
+_var*.*
 
 ###> symfony/webpack-encore-bundle ###
 /node_modules/
