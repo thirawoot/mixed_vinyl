@@ -1,3 +1,6 @@
+parameters:
+    cache_adapter: 'cache.adapter.filesystem'
+
 framework:
     cache:
         # Unique name of your app: used to compute stable namespaces for cache keys.
@@ -6,6 +9,8 @@ framework:
         # The "app" cache stores to the filesystem by default.
         # The data in this cache should persist between deploys.
         # Other options include:
+
+        app: '%cache_adapter%'
 
         # Redis
         #app: cache.adapter.redis
