@@ -28,8 +28,15 @@ class VinylController extends AbstractController
     {
         //SluggerInterface
 
-        $mixes = $mixRepository->findAllOrderedByVotes();
+        $mixes = $mixRepository->findAllOrderedByVotes($slug);
         return new Response('browse: ' . $slug);
+    }
+
+    #[Route('/mix/{id}')]
+    public function show($id, VinylMixRepository $mixRepository): Response
+    {
+        $mix = $mixRepository->find($id);
+        dd($mix);
     }
 }
 
