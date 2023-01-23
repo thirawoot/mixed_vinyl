@@ -7,6 +7,8 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\String\Slugger\SluggerInterface;
 
+use App\Repository\VinylMixRepository;
+
 class VinylController extends AbstractController
 {
     #[Route('/')]
@@ -22,10 +24,12 @@ class VinylController extends AbstractController
     // }
 
     #[Route('/browse/{slug}', methods: ['GET'])]
-    public function browse( $slug = null): Response
+    public function browse(VinylMixRepository $mixRepository, $slug = null): Response
     {
         //SluggerInterface
-       return new Response('browse: ' . $slug);
+
+        $mixes = $mixRepository->findAllOrderedByVotes();
+        return new Response('browse: ' . $slug);
     }
 }
 
