@@ -27,7 +27,7 @@ class VinylController extends AbstractController
     public function browse(VinylMixRepository $mixRepository, $slug = null): Response
     {
         //SluggerInterface
-
+        throw $this->createNotFoundException('Mix not found');
         $mixes = $mixRepository->findAllOrderedByVotes($slug);
         return new Response('browse: ' . $slug);
     }
@@ -35,8 +35,10 @@ class VinylController extends AbstractController
     #[Route('/mix/{id}')]
     public function show($id, VinylMixRepository $mixRepository): Response
     {
+        
         $mix = $mixRepository->find($id);
         dd($mix);
     }
+
 }
 
