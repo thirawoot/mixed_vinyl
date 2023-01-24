@@ -5,51 +5,86 @@ namespace App\Entity;
 use App\Repository\VinylMixRepository;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Timestampable\Traits\TimestampableEntity;
+use Gedmo\Mapping\Annotation\Slug;
 
 #[ORM\Entity(repositoryClass: VinylMixRepository::class)]
 class VinylMix
 {
     use TimestampableEntity;
-    
+
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
-    private ?string $name = null;
+    private ?string $title = null;
+
+    #[ORM\Column(length: 255)]
+    private ?string $description = null;
 
     #[ORM\Column(length: 20)]
-    private ?string $genres = null;
+    private ?string $genre = null;
 
+    #[ORM\Column]
+    private ?int $trackCount = null;
+    
     #[ORM\Column]
     private ?int $votes = null;
 
+    #[ORM\Column(length: 100, unique: true)]
+    #[Slug(fields: ['title'])]
+    private ?string $slug = null;
+   
     public function getId(): ?int
     {
         return $this->id;
     }
-
-    public function getName(): ?string
+    
+    public function getTitle(): ?string
     {
-        return $this->name;
+        return $this->title;
     }
 
-    public function setName(string $name): self
+    public function setTitle(string $title): self
     {
-        $this->name = $name;
+        $this->title = $title;
 
         return $this;
     }
 
-    public function getGenres(): ?string
+    public function getGenre(): ?string
     {
-        return $this->genres;
+        return $this->genre;
     }
 
-    public function setGenres(string $genres): self
+    public function setGenre(string $genre): self
     {
-        $this->genres = $genres;
+        $this->genre = $genre;
+
+        return $this;
+    }
+
+    public function getDescription(): ?string
+    {
+        return $this->description;
+    }
+
+    public function setDescription(string $description): self
+    {
+        $this->description = $description;
+
+        return $this;
+    }
+
+    public function getTrackCount(): ?int
+    {
+        return $this->trackCount;
+    }
+
+    public function setTrackCount(int $trackCount): self
+    {
+        $this->trackCount = $trackCount;
 
         return $this;
     }
@@ -74,4 +109,32 @@ class VinylMix
     {
         $this->votes--;
     }
+
+    public function getVotesString(): string
+    {
+        $prefix = ($this->votes === 0) ? '' : (($this->votes >= 0) ? '+' : '-');
+        return sprintf('%s %d', $prefix, abs($this->votes));
+    }
+
+    public function getImageUrl(int $width): string
+    {
+        return sprintf(
+            'https://picsum.photos/id/%d/%d',
+            ($this->getId() + 50) % 1000, // number between 0 and 1000, based on the id
+            $width
+        );
+    }
+
+    public function getSlug(): ?string
+    {
+        return $this->slug;
+    }
+
+    public function setSlug(string $slug): self
+    {
+        $this->slug = $slug;
+
+        return $this;
+    }
+
 }

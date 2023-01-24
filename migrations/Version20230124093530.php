@@ -10,7 +10,7 @@ use Doctrine\Migrations\AbstractMigration;
 /**
  * Auto-generated Migration: Please modify to your needs!
  */
-final class Version20230123132328 extends AbstractMigration
+final class Version20230124093530 extends AbstractMigration
 {
     public function getDescription(): string
     {
@@ -21,7 +21,8 @@ final class Version20230123132328 extends AbstractMigration
     {
         // this up() migration is auto-generated, please modify it to your needs
         $this->addSql('CREATE SEQUENCE vinyl_mix_id_seq INCREMENT BY 1 MINVALUE 1 START 1');
-        $this->addSql('CREATE TABLE vinyl_mix (id INT NOT NULL, name VARCHAR(255) NOT NULL, genres VARCHAR(20) NOT NULL, votes INT NOT NULL, PRIMARY KEY(id))');
+        $this->addSql('CREATE TABLE vinyl_mix (id INT NOT NULL, title VARCHAR(255) NOT NULL, description VARCHAR(255) NOT NULL, genre VARCHAR(20) NOT NULL, track_count INT NOT NULL, votes INT NOT NULL, slug VARCHAR(100) NOT NULL, created_at TIMESTAMP(0) WITHOUT TIME ZONE NOT NULL, updated_at TIMESTAMP(0) WITHOUT TIME ZONE NOT NULL, PRIMARY KEY(id))');
+        $this->addSql('CREATE UNIQUE INDEX UNIQ_38F28AFB989D9B62 ON vinyl_mix (slug)');
     }
 
     public function down(Schema $schema): void
