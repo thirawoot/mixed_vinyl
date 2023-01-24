@@ -1,0 +1,55 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello VinylController!{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{% block body %}
+
+    <turbo-frame id="mix-browse-list-{{ pager.currentPage }}">
+        <div class="row">
+            {% for mix in pager %}
+                <div class="mixed-vinyl-container p-3 text-center">
+
+                    <img src="{{ mix.getImageUrl(300) }}" alt="'Mix album cover'">
+
+                    <p class="mt-2"><strong>{{ mix.title }}</strong></p>
+
+                    <span>{{ mix.trackCount }} Tracks</span>
+                    |
+                    <span>{{ mix.genre }}</span>
+                    |
+                    <span>{{ mix.createdAt|format_datetime('medium', 'short') }}</span>
+
+                    {{ mix.votesString }} votes
+                </div>
+
+            {% endfor %}
+            {{ pagerfanta(pager) }}
+            {% if pager.hasNextPage %}
+                <turbo-frame id="mix-browse-list-{{ pager.nextPage }}" src="{{ pagerfanta_page_url(pager, pager.nextPage) }}" loading="lazy"></turbo-frame>
+            {% endif %}
+
+        </div>
+    </turbo-frame>        
+
+{% endblock %}

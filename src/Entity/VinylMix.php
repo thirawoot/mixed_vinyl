@@ -120,7 +120,7 @@ class VinylMix
     {
         return sprintf(
             'https://picsum.photos/id/%d/%d',
-            ($this->getId() + 50) % 1000, // number between 0 and 1000, based on the id
+            ($this->getId() % 1000) + 83, // number between 83 and 1083, based on the id
             $width
         );
     }
