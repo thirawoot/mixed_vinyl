@@ -25,3 +25,7 @@ yarn-error.log
 "--docker--/db/data/"
 '--docker--/'
 '--docker--/db/data/'
+.buildpath
+.project
+.settings/
+

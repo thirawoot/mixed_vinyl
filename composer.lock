@@ -1609,12 +1609,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine-extensions/DoctrineExtensions.git",
-                "reference": "a06dc64f3986e2d67c767841dc2070bab8a84835"
+                "reference": "0f96c6f8142daf46bf3498b2368ff14d8464aa2e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine-extensions/DoctrineExtensions/zipball/a06dc64f3986e2d67c767841dc2070bab8a84835",
-                "reference": "a06dc64f3986e2d67c767841dc2070bab8a84835",
+                "url": "https://api.github.com/repos/doctrine-extensions/DoctrineExtensions/zipball/0f96c6f8142daf46bf3498b2368ff14d8464aa2e",
+                "reference": "0f96c6f8142daf46bf3498b2368ff14d8464aa2e",
                 "shasum": ""
             },
             "require": {
@@ -1644,7 +1644,7 @@
                 "doctrine/orm": "^2.10.2",
                 "friendsofphp/php-cs-fixer": "^3.4.0,<3.10",
                 "nesbot/carbon": "^2.55",
-                "phpstan/phpstan": "^1.1",
+                "phpstan/phpstan": "^1.9",
                 "phpstan/phpstan-doctrine": "^1.0",
                 "phpstan/phpstan-phpunit": "^1.0",
                 "phpunit/phpunit": "^8.5 || ^9.5",
@@ -1710,7 +1710,7 @@
                 "source": "https://github.com/doctrine-extensions/DoctrineExtensions/tree/main",
                 "wiki": "https://github.com/Atlantic18/DoctrineExtensions/tree/main/doc"
             },
-            "time": "2023-01-23T21:53:34+00:00"
+            "time": "2023-01-24T19:32:58+00:00"
         },
         {
             "name": "laminas/laminas-code",
