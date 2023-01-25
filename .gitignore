@@ -20,11 +20,9 @@ npm-debug.log
 yarn-error.log
 ###< symfony/webpack-encore-bundle ###
 
-/_TOKEN.md
-"--docker--/"
-"--docker--/db/data/"
-'--docker--/'
-'--docker--/db/data/'
+_TOKEN.md
+/--docker--/
+/--docker--/db/data/
 .buildpath
 .project
 .settings/
