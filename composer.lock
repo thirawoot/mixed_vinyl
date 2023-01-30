@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "359e0065d3f09e1ff6f3a2f1f9d81f0b",
+    "content-hash": "62af5ebc5d1e75c8b61aefbe55860cea",
     "packages": [
         {
             "name": "babdev/pagerfanta-bundle",
@@ -1605,16 +1605,16 @@
         },
         {
             "name": "gedmo/doctrine-extensions",
-            "version": "dev-main",
+            "version": "v3.11.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine-extensions/DoctrineExtensions.git",
-                "reference": "0f96c6f8142daf46bf3498b2368ff14d8464aa2e"
+                "reference": "a2364710d2f367f74d9f041c3356f2929b8c6690"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine-extensions/DoctrineExtensions/zipball/0f96c6f8142daf46bf3498b2368ff14d8464aa2e",
-                "reference": "0f96c6f8142daf46bf3498b2368ff14d8464aa2e",
+                "url": "https://api.github.com/repos/doctrine-extensions/DoctrineExtensions/zipball/a2364710d2f367f74d9f041c3356f2929b8c6690",
+                "reference": "a2364710d2f367f74d9f041c3356f2929b8c6690",
                 "shasum": ""
             },
             "require": {
@@ -1657,11 +1657,10 @@
                 "doctrine/orm": "to use the extensions with the ORM",
                 "symfony/cache": "to cache parsed annotations"
             },
-            "default-branch": true,
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-main": "3.11-dev"
+                    "dev-main": "3.12-dev"
                 }
             },
             "autoload": {
@@ -1707,10 +1706,10 @@
             "support": {
                 "email": "gediminas.morkevicius@gmail.com",
                 "issues": "https://github.com/doctrine-extensions/DoctrineExtensions/issues",
-                "source": "https://github.com/doctrine-extensions/DoctrineExtensions/tree/main",
+                "source": "https://github.com/doctrine-extensions/DoctrineExtensions/tree/v3.11.0",
                 "wiki": "https://github.com/Atlantic18/DoctrineExtensions/tree/main/doc"
             },
-            "time": "2023-01-24T19:32:58+00:00"
+            "time": "2023-01-26T00:14:07+00:00"
         },
         {
             "name": "laminas/laminas-code",
