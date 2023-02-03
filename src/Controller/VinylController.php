@@ -14,7 +14,7 @@ use Pagerfanta\Pagerfanta;
 
 class VinylController extends AbstractController
 {
-    #[Route('/')]
+    #[Route('/', name: 'app_homepage')]
     public function index(): Response
     {
        return $this->render('index.html.twig');

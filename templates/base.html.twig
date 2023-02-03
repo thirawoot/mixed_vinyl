@@ -14,6 +14,7 @@
         {% endblock %}
     </head>
     <body>
+        {% if app.flashes('success') is not null and app.flashes('success') is not empty %}
         <div class="mb-5">
             {% for message in app.flashes('success') %}
                 <div class="alert alert-success">
@@ -21,6 +22,9 @@
                 </div>
             {% endfor %}
         </div>
+        {% endif %}
+
+
         {% block body %}{% endblock %}
     </body>
 </html>

@@ -27,3 +27,4 @@ _TOKEN.md
 .project
 .settings/
 
+/nbproject/private/

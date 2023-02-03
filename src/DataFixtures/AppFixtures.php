@@ -7,6 +7,7 @@ use Doctrine\Persistence\ObjectManager;
 
 // use App\Entity\VinylMix;
 use App\Factory\VinylMixFactory;
+use App\Factory\UserFactory;
 
 class AppFixtures extends Fixture
 {
@@ -26,5 +27,10 @@ class AppFixtures extends Fixture
         
         // $manager->persist($mix);
         // $manager->flush();
+
+        UserFactory::createOne(['email'=>'a@b.c', 'firstName'=>'me']);
+
+        UserFactory::createMany(500);
+
     }
 }
