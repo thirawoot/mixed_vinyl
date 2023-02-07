@@ -12,19 +12,42 @@
         {% block javascripts %}
             {{ encore_entry_script_tags('app') }}
         {% endblock %}
+
+        <style>
+            .container { margin: 1em auto; min-width: 638px; max-width: 992px; width: 95%; font: 18px/1.5 sans-serif; }
+            .container code { background: #F5F5F5; padding: 2px 6px; }
+        </style>
     </head>
     <body>
-        {% if app.flashes('success') is not null and app.flashes('success') is not empty %}
-        <div class="mb-5">
-            {% for message in app.flashes('success') %}
-                <div class="alert alert-success">
-                    {{ message }}
+        <div class="container">
+            <div class="row">
+                <div class="col"><h2><a href="{{ path('app_homepage') }}">Hello~~</a></h2></div>
+                <div class="col text-end">
+                    {% if is_granted('ROLE_USER') %}
+                        <small>{% if not is_granted('IS_AUTHENTICATED_FULLY') %}<small>~ </small>{% endif %}User: <strong>{{ app.user.email }}</strong></small>
+                        &nbsp<a href="{{ path('app_logout') }}" class="btn btn-light">Logout</a>
+                    {% else %}        
+                        {% if app.request.pathinfo != path('app_login') %}
+                            <a href="{{ path('app_login') }}" class="btn btn-primary">Log In</a>
+                            <a href="#" class="btn btn-light">Sign up</a>
+                        {% endif %}
+                    {% endif %}
                 </div>
-            {% endfor %}
+            </div>
+            
+            <p class="border-top border-light" style="margin-top: 10px;"></p>
+
+            {% if app.flashes('success') is not null and app.flashes('success') is not empty %}
+            <div class="mb-5">
+                {% for message in app.flashes('success') %}
+                    <div class="alert alert-success">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            </div>
+            {% endif %}
+
+            {% block body %}{% endblock %}
         </div>
-        {% endif %}
-
-
-        {% block body %}{% endblock %}
     </body>
 </html>

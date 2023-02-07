@@ -3,29 +3,30 @@
 namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
-// use Symfony\Component\Security\Core\User\UserInterface;
-// use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
+use Symfony\Bundle\SecurityBundle\Security;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
+//use Symfony\Component\Security\Http\Attribute\IsGranted;
 
 class SecurityController extends AbstractController
 {
     #[Route('/login', name: 'app_login')]
-    public function login(AuthenticationUtils $authenticationUtils): Response
+//    #[IsGranted("IS_AUTHENTICATED_REMEMBERED")]
+    public function login(AuthenticationUtils $authenticationUtils, Security $security, Request $request): Response
     {
-        // $user = $token->getUser();
-        // dump($user);
+        $this->getUser();
+        if ($request->isMethod('GET') && null !== $security->getToken()?->getUser()) {
+            $security->logout(false);
 
-        // if (!$token->getUser() instanceof UserInterface) {
-        //     // the user is not authenticated, e.g. only allow them to
-        //     // see public posts
-        // //    return $subject->isPublic();
-        // }
+            return $this->redirectToRoute('app_login');
+        }
 
         return $this->render('security/login.html.twig', [
             'error' => $authenticationUtils->getLastAuthenticationError(),
+            'last_username' => $authenticationUtils->getLastUsername(),
         ]);
     }
 
@@ -34,4 +35,18 @@ class SecurityController extends AbstractController
     {
         throw new \Exception('logout() should never be reached');
     }
+
+    #[Route('/user-support/tickets', name: 'app_user-support_tickets')]
+    #[IsGranted("ROLE_USER")]    // not work ---> เพราะไม่ได้ Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
+    #[IsGranted("IS_AUTHENTICATED_FULLY")]
+    public function support_tickets(Security $security): Response
+    {
+        // $this->denyAccessUnlessGranted('ROLE_USER');
+//         $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
+
+//        $user = $security->getToken()?->getUser();
+
+        return new Response('OPEN SUPPORT TICKETS!, <br />@' . __CLASS__ . ' ~ line:' . __LINE__);    
+    }
+
 }

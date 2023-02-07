@@ -19,9 +19,30 @@ security:
             provider: app_user_provider
             logout: true
             custom_authenticator:
-                - App\Security\LoginFormAuthenticator
+            #    - App\Security\LoginFormAuthenticator
                 - App\Security\DummyAuthenticator
-
+            #entry_point: App\Security\LoginFormAuthenticator
+            entry_point: form_login
+            form_login:
+                login_path: app_login
+                check_path: app_login
+                # remember_me: true
+                # use_forward: false
+                # require_previous_session: false
+                username_parameter: email
+                password_parameter: password
+                # csrf_parameter: _csrf_token
+                # csrf_token_id: authenticate
+                enable_csrf: true
+                # post_only: true
+                # form_only: false
+                # always_use_default_target_path: false
+                # default_target_path: /
+                # target_path_parameter: _target_path
+                # use_referer: false
+                # failure_path: null
+                # failure_forward: false
+                # failure_path_parameter: _failure_path
 
             # activate different ways to authenticate
             # https://symfony.com/doc/current/security.html#the-firewall
@@ -34,11 +55,12 @@ security:
                 signature_properties: [password]
                 # always_remember_me: true
 
+
     # Easy way to control access for large sections of your site
     # Note: Only the *first* access control that matches will be used
     access_control:
         - { path: ^/admin, roles: ROLE_ADMIN }
-        - { path: ^/rule, roles: ROLE_ADMIN }
+        - { path: ^/rule, roles: ROLE_USER }
         # - { path: ^/profile, roles: ROLE_USER }
 
 when@test:

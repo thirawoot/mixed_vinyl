@@ -1,29 +1,15 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello Sample2Controller!{% endblock %}
+{% block title %}Hello World!{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
+    <h1><i class="fa-solid fa-record-vinyl"></i> Hello <strong>World!</strong> ✅</h1>
 
-<div class="example-wrapper">
-    <div class="row">
-        <div class="nav-link">
-            <a href="{{ path('app_login') }}" class="btn btn-light">Log In</a>
-            <a href="#" class="btn btn-dark">Sign up</a>
-            <a href="{{ path('app_logout') }}" class="btn btn-dark">Log Out</a>
-        </div>
-        <hr />
+    <p><strong><i class="fa-solid fa-glasses"></i> R U</strong> Looking for:</p>
 
-        <h1><i class="fa-solid fa-record-vinyl"></i> Hello \{\{ controller_name \}}! ✅</h1>
+    <ul>
+        <li><i class="fa-solid fa-solid fa-computer"></i> <a href="{{ path('app_rule') }}"><code>/rule</code></a> (<keyboard>RULE_USER</keyboard>)</li>
+        <li><i class="fa-solid fa-computer-mouse">   </i> <a href="{{ path('app_user-support_tickets') }}">User Support</a> (open new support tickets)</li>
+    </ul>
 
-        <i class="fa-solid fa-glasses"></i> This friendly message is coming from:
-        <ul>
-            <li><i class="fa-sharp fa-solid fa-computer"></i> Your controller at <code><a href="{{ '/home/gumjai/Documents/lp-project/new/dev/2022-backend-web/guestbook3/src/Controller/Sample2Controller.php'|file_link(0) }}">src/Controller/Sample2Controller.php</a></code></li>
-            <li><i class="fa-solid fa-computer-mouse"></i> Your template at <code><a href="{{ '/home/gumjai/Documents/lp-project/new/dev/2022-backend-web/guestbook3/templates/sample2/index.html.twig'|file_link(0) }}">templates/sample2/index.html.twig</a></code></li>
-        </ul>
-    </div>
-</div>
 {% endblock %}

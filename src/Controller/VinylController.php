@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use Psr\Log\LoggerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -15,9 +16,18 @@ use Pagerfanta\Pagerfanta;
 class VinylController extends AbstractController
 {
     #[Route('/', name: 'app_homepage')]
-    public function index(): Response
+    public function index(LoggerInterface $loger): Response
     {
-       return $this->render('index.html.twig');
+        $u = $this->getUser();
+        $uc = $u ? get_class($u) : 'blank';
+        dump($uc);
+
+        $loger->info('{user} id is {id}', [
+            'user' => $this->getUser()?->getEmail(),
+            'id' => $this->getUser()?->getId(),
+        ]);
+
+        return $this->render('index.html.twig');
     }
 
     // #[Route('/browse')]

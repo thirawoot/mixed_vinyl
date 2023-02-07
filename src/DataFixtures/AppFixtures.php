@@ -28,9 +28,17 @@ class AppFixtures extends Fixture
         // $manager->persist($mix);
         // $manager->flush();
 
-        UserFactory::createOne(['email'=>'a@b.c', 'firstName'=>'me']);
+        UserFactory::createOne([
+            'email'=>'admin@b.c', 
+            'firstName'=>'admin',
+            'roles' => ['ROLE_ADMIN']            
+        ]);
+        UserFactory::createOne([
+            'email'=>'user@b.c', 
+            'firstName'=>'somebody',
+        ]);
 
-        UserFactory::createMany(10);
+        UserFactory::createMany(5);
         $manager->flush();
 
     }
