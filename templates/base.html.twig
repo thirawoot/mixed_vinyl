@@ -19,14 +19,40 @@
         </style>
     </head>
     <body>
+        <nav class="container navbar navbar-expand-lg navbar-light bg-light px-1">
+            <div class="container-fluid">
+                <div class="collapse navbar-collapse" id="navbar-collapsable">
+                    {% if is_granted('ROLE_USER') %}
+                        <div class="dropdown">
+                            <button
+                                class="dropdown-toggle btn"
+                                type="button"
+                                id="user-dropdown"
+                                data-bs-toggle="dropdown"
+                                aria-expanded="false"
+                            > <img src="{{ app.user.avatarUri }}" alt="{{ app.user.displayName }} Avatar">
+                            </button>
+                            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="user-dropdown">
+                                <li>
+                                    <a class="dropdown-item" href="{{ path('app_logout') }}">Log Out</a>
+                                </li>
+                            </ul>
+                        </div>
+                    {% else %}
+                    {% endif %}
+                </div>
+            </div>
+        </nav>
+
+
         <div class="container">
             <div class="row">
                 <div class="col"><h2><a href="{{ path('app_homepage') }}">Hello~~</a></h2></div>
                 <div class="col text-end">
                     {% if is_granted('ROLE_USER') %}
-                        <small>{% if not is_granted('IS_AUTHENTICATED_FULLY') %}<small>~ </small>{% endif %}User: <strong>{{ app.user.email }}</strong></small>
+                        <small>{% if not is_granted('IS_AUTHENTICATED_FULLY') %}<small>~ </small>{% endif %}User: <strong>{{ app.user.displayName }}</strong></small>
                         &nbsp<a href="{{ path('app_logout') }}" class="btn btn-light">Logout</a>
-                    {% else %}        
+                    {% else %}
                         {% if app.request.pathinfo != path('app_login') %}
                             <a href="{{ path('app_login') }}" class="btn btn-primary">Log In</a>
                             <a href="#" class="btn btn-light">Sign up</a>

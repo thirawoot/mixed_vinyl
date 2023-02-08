@@ -12,6 +12,7 @@ use Symfony\Component\String\Slugger\SluggerInterface;
 use App\Repository\VinylMixRepository;
 use Pagerfanta\Doctrine\ORM\QueryAdapter;
 use Pagerfanta\Pagerfanta;
+use App\Entity\User;
 
 class VinylController extends AbstractController
 {
@@ -23,9 +24,12 @@ class VinylController extends AbstractController
         dump($uc);
 
         $loger->info('{user} id is {id}', [
-            'user' => $this->getUser()?->getEmail(),
+            'user' => $this->getUser()?->getUserIdentifier(),
             'id' => $this->getUser()?->getId(),
         ]);
+
+        dump($loger);
+        dump($loger);
 
         return $this->render('index.html.twig');
     }

@@ -11,7 +11,8 @@ use Symfony\Bundle\SecurityBundle\Security;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 //use Symfony\Component\Security\Http\Attribute\IsGranted;
 
-class SecurityController extends AbstractController
+
+class SecurityController extends BaseController
 {
     #[Route('/login', name: 'app_login')]
 //    #[IsGranted("IS_AUTHENTICATED_REMEMBERED")]
@@ -45,6 +46,13 @@ class SecurityController extends AbstractController
 //         $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
 
 //        $user = $security->getToken()?->getUser();
+
+//        if ($security->getUser()) {
+//        }
+// ++++++++++++++
+//        if ($security->isGranted('IS_AUTHENTICATED_REMEMBERED')) {
+//            // ...
+//        }
 
         return new Response('OPEN SUPPORT TICKETS!, <br />@' . __CLASS__ . ' ~ line:' . __LINE__);    
     }
