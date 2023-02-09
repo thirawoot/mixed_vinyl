@@ -21,15 +21,15 @@ class VinylController extends AbstractController
     {
         $u = $this->getUser();
         $uc = $u ? get_class($u) : 'blank';
-        dump($uc);
+//        dump($uc);
 
         $loger->info('{user} id is {id}', [
             'user' => $this->getUser()?->getUserIdentifier(),
             'id' => $this->getUser()?->getId(),
         ]);
 
-        dump($loger);
-        dump($loger);
+//        dump($loger);
+//        dump($loger);
 
         return $this->render('index.html.twig');
     }

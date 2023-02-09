@@ -44,6 +44,14 @@
             </div>
         </nav>
 
+        ------&gt;{% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
+        USER: <a href="{{ path('app_user_api_me') }}"> {{ path('app_user_api_me') }}</a><br/>
+            {{ stimulus_controller('user-api', {
+                url: path('app_user_api_me')
+            }) }}
+        {% else %}
+            <div>(GUEST)</div>
+        {% endif %}
 
         <div class="container">
             <div class="row">
