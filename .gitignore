@@ -26,5 +26,6 @@ _TOKEN.md
 .buildpath
 .project
 .settings/
+.yarn
 
 /nbproject/private/
